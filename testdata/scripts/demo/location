@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Show the directory containing this script.
+
+printf '%s\n' "$SD"
+
+# Moar help ? shouldnt show this

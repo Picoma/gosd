@@ -1,0 +1,40 @@
+[tools]
+go = "1.27.0"
+goreleaser = "2"
+golangci-lint = "latest"
+jj = "latest"
+
+
+[env]
+_.path = ["bin"]
+SD_ROOT = "/home/ipha4430/Bureau/gosd/testdata/scripts"
+
+
+[tasks.build]
+description = "Build the gosd binary"
+run = "go build -o bin/gosd ."
+
+[tasks.snapshot]
+description = "Build a snapshot release without publishing"
+run = "goreleaser release --snapshot"
+
+[tasks.test]
+description = "Run Go tests"
+run = "go test ./..."
+
+[tasks.lint]
+description = "Run golangci-lint"
+run = "golangci-lint run ./..."
+
+[tasks.fmt]
+description = "Format Go code"
+run = "gofmt -w main.go cmd pkg"
+
+[tasks.check]
+description = "Run tests and lint"
+depends = ["test", "lint"]
+
+[tasks.dev]
+description = "Run gosd against the example script directory"
+env.SD_ROOT = "{{config_root}}/testdata/scripts"
+run = "go run ."

@@ -1,0 +1,15 @@
+version: 2
+
+project_name: gosd
+
+builds:
+  - main: .
+    binary: gosd
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+    ldflags:
+      - -s -w
