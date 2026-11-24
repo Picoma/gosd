@@ -7,8 +7,9 @@ jj = "latest"
 
 [env]
 _.path = ["bin"]
+_.file = ".env"
 SD_ROOT = "/home/ipha4430/Bureau/gosd/testdata/scripts"
-
+GITHUB_TOKEN = { redact = true, required = true }
 
 [tasks.build]
 description = "Build the gosd binary"
